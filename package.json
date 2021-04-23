@@ -4,7 +4,11 @@
   "description": "Artem Pizza",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --passWithNoTests --no-cache --runInBand",
+    "test:watch": "npm test -- --watch",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage",
+    "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info"
   },
   "repository": {
     "type": "git",
