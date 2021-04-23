@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/YuriAdonev/artem-pizza/issues"
   },
-  "homepage": "https://github.com/YuriAdonev/artem-pizza#readme"
+  "homepage": "https://github.com/YuriAdonev/artem-pizza#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^3.1.0"
+  }
 }
