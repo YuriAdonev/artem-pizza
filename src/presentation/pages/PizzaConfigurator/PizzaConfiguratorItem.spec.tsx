@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
+import faker from 'faker'
 import { PizzaConfiguratorItem, PizzaConfiguratorItemProps } from './PizzaConfiguratorItem'
 
 type SutTypes = {
@@ -16,14 +17,21 @@ const makeSut = (props: PizzaConfiguratorItemProps): SutTypes => {
   }
 }
 
+const makeProps = (): PizzaConfiguratorItemProps => {
+  const values = [faker.random.words(2)]
+  for (let i = 0; i < faker.datatype.number(5); i++) {
+    values.push(faker.random.words(2))
+  }
+  return {
+    title: faker.random.words(3),
+    name: faker.database.column(),
+    values
+  }
+}
+
 describe('PizzaConfiguratorItem', () => {
   test('Should render radio inputs without type in the props', () => {
-    const props = {
-      title: 'any_title',
-      name: 'any_name',
-      values: ['any_value1', 'any_value2']
-    }
-    const { wrapper } = makeSut(props)
+    const { wrapper } = makeSut(makeProps())
     const input = wrapper.querySelector('input[type="radio"]')
     expect(input).toBeTruthy()
   })
