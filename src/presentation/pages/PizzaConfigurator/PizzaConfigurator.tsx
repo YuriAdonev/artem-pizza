@@ -1,4 +1,5 @@
 import React from 'react'
+import { SelectMultiply } from './SelectMultiply'
 import { SelectSingle } from './SelectSingle'
 
 export const PizzaConfigurator: React.FC = () => {
@@ -19,51 +20,21 @@ export const PizzaConfigurator: React.FC = () => {
         name="sauce"
         values={['Томатный', 'Белый', 'Острый']}
       />
-      <div className="pizza-configurator__item">
-        <h3>Добавьте сыр</h3>
-        <label>
-          <input type="checkbox" name="cheese" />
-          <span>моцарелла</span>
-        </label>
-        <label>
-          <input type="checkbox" name="cheese" />
-          <span>чеддер</span>
-        </label>
-        <label>
-          <input type="checkbox" name="cheese" />
-          <span>дор блю</span>
-        </label>
-      </div>
-      <div className="pizza-configurator__item">
-        <h3>Добавьте овощи</h3>
-        <label>
-          <input type="checkbox" name="vegetables" />
-          <span>помидор</span>
-        </label>
-        <label>
-          <input type="checkbox" name="vegetables" />
-          <span>грибы</span>
-        </label>
-        <label>
-          <input type="checkbox" name="vegetables" />
-          <span>перец</span>
-        </label>
-      </div>
-      <div className="pizza-configurator__item">
-        <h3>Добавьте мясо</h3>
-        <label>
-          <input type="checkbox" name="meat" />
-          <span>бекон</span>
-        </label>
-        <label>
-          <input type="checkbox" name="meat" />
-          <span>пепперони</span>
-        </label>
-        <label>
-          <input type="checkbox" name="meat" />
-          <span>ветчина</span>
-        </label>
-      </div>
+      <SelectMultiply
+        title="Добавьте сыр"
+        name="cheese"
+        values={['моцарелла', 'чеддер', 'дор блю']}
+      />
+      <SelectMultiply
+        title="Добавьте овощи"
+        name="vegetables"
+        values={['помидор', 'грибы', 'перец']}
+      />
+      <SelectMultiply
+        title="Добавьте мясо"
+        name="meat"
+        values={['бекон', 'пепперони', 'ветчина']}
+      />
       <button>Заказать за 200 руб</button>
       <div className="pizza-configurator__selected">
         <h2>Твоя пицца</h2>
