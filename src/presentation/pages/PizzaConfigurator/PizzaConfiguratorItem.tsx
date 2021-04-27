@@ -1,25 +1,27 @@
 import React from 'react'
 
-type Props = {
-  type: 'single' | 'multiply'
+export type PizzaConfiguratorItemProps = {
+  type?: 'multiply'
   title: string
   name: string
   values: string[]
 }
 
-export const PizzaConfiguratorItem: React.FC<Props> = ({ type, title, name, values }: Props) => {
+export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = ({ type, title, name, values }: PizzaConfiguratorItemProps) => {
   return (
-    <div className="pizza-configurator__item">
+    <div className="pizza-configurator-item">
       <h3>{title}</h3>
-      {values.map(value => {
-        const inputType = type === 'single' ? 'radio' : 'checkbox'
-        return (
-          <label key={value}>
-            <input type={inputType} name={name} />
-            <span>{value}</span>
-          </label>
-        )
-      })}
+      <div data-testid={'pizza-configurator-item-wrapper'} className="pizza-configurator-item__wrap">
+        {values.map((value, index) => {
+          const inputType = type === 'multiply' ? 'checkbox' : 'radio'
+          return (
+            <label key={index}>
+              <input type={inputType} name={name} />
+              <span>{value}</span>
+            </label>
+          )
+        })}
+      </div>
     </div>
   )
 }
