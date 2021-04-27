@@ -4,12 +4,15 @@ import { PizzaConfiguratorItem, PizzaConfiguratorItemProps } from './PizzaConfig
 
 type SutTypes = {
   sut: RenderResult
+  wrapper: HTMLElement
 }
 
 const makeSut = (props: PizzaConfiguratorItemProps): SutTypes => {
   const sut = render(<PizzaConfiguratorItem {...props} />)
+  const wrapper = sut.getByTestId('pizza-configurator-item-wrapper')
   return {
-    sut
+    sut,
+    wrapper
   }
 }
 
@@ -20,9 +23,8 @@ describe('PizzaConfiguratorItem', () => {
       name: 'any_name',
       values: ['any_value1', 'any_value2']
     }
-    const { sut } = makeSut(props)
-    const wrapper = sut.getByTestId('pizza-configurator-item-wrapper')
-    const inputs = wrapper.querySelectorAll('input[type="radio"]')
-    expect(inputs.length).toBe(props.values.length)
+    const { wrapper } = makeSut(props)
+    const input = wrapper.querySelector('input[type="radio"]')
+    expect(input).toBeTruthy()
   })
 })
