@@ -35,4 +35,12 @@ describe('PizzaConfiguratorItem', () => {
     const input = wrapper.querySelector('input[type="radio"]')
     expect(input).toBeTruthy()
   })
+
+  test('Should render checkbox inputs with type=multiply in the props', () => {
+    const props = makeProps()
+    props.type = 'multiply'
+    const { wrapper } = makeSut(props)
+    const input = wrapper.querySelector('input[type="checkbox"]')
+    expect(input).toBeTruthy()
+  })
 })
