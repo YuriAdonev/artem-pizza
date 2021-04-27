@@ -1,36 +1,41 @@
 import React from 'react'
-import { SelectMultiply } from './SelectMultiply'
 import { PizzaConfiguratorItem } from './PizzaConfiguratorItem'
 
 export const PizzaConfigurator: React.FC = () => {
   return (
     <form className="pizza-configurator">
       <PizzaConfiguratorItem
+        type="single"
         title="Размер"
         name="size"
         values={['30 см', '35 см']}
       />
       <PizzaConfiguratorItem
+        type="single"
         title="Тесто"
         name="dough"
         values={['Пышное', 'Тонкое']}
       />
       <PizzaConfiguratorItem
+        type="single"
         title="Выберите соус"
         name="sauce"
         values={['Томатный', 'Белый', 'Острый']}
       />
-      <SelectMultiply
+      <PizzaConfiguratorItem
+        type="multiply"
         title="Добавьте сыр"
         name="cheese"
         values={['моцарелла', 'чеддер', 'дор блю']}
       />
-      <SelectMultiply
+      <PizzaConfiguratorItem
+        type="multiply"
         title="Добавьте овощи"
         name="vegetables"
         values={['помидор', 'грибы', 'перец']}
       />
-      <SelectMultiply
+      <PizzaConfiguratorItem
+        type="multiply"
         title="Добавьте мясо"
         name="meat"
         values={['бекон', 'пепперони', 'ветчина']}
