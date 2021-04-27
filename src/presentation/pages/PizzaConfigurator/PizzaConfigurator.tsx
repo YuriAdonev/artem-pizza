@@ -1,21 +1,21 @@
 import React from 'react'
 import { SelectMultiply } from './SelectMultiply'
-import { SelectSingle } from './SelectSingle'
+import { PizzaConfiguratorItem } from './PizzaConfiguratorItem'
 
 export const PizzaConfigurator: React.FC = () => {
   return (
     <form className="pizza-configurator">
-      <SelectSingle
+      <PizzaConfiguratorItem
         title="Размер"
         name="size"
         values={['30 см', '35 см']}
       />
-      <SelectSingle
+      <PizzaConfiguratorItem
         title="Тесто"
         name="dough"
         values={['Пышное', 'Тонкое']}
       />
-      <SelectSingle
+      <PizzaConfiguratorItem
         title="Выберите соус"
         name="sauce"
         values={['Томатный', 'Белый', 'Острый']}

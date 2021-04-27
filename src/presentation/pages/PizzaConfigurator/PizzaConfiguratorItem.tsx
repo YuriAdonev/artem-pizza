@@ -6,7 +6,7 @@ type Props = {
   values: string[]
 }
 
-export const SelectSingle: React.FC<Props> = ({ title, name, values }: Props) => {
+export const PizzaConfiguratorItem: React.FC<Props> = ({ title, name, values }: Props) => {
   return (
     <div className="pizza-configurator__item">
       <h3>{title}</h3>
