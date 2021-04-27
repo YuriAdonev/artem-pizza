@@ -1,45 +1,24 @@
 import React from 'react'
+import { SelectSingle } from './SelectSingle'
 
 export const PizzaConfigurator: React.FC = () => {
   return (
     <form className="pizza-configurator">
-      <div className="pizza-configurator__item">
-        <h3>Размер</h3>
-        <label>
-          <input type="radio" name="size" />
-          <span>30 см</span>
-        </label>
-        <label>
-          <input type="radio" name="size" />
-          <span>35 см</span>
-        </label>
-      </div>
-      <div className="pizza-configurator__item">
-        <h3>Тесто</h3>
-        <label>
-          <input type="radio" name="dough" />
-          <span>Пышное</span>
-        </label>
-        <label>
-          <input type="radio" name="dough" />
-          <span>Тонкое</span>
-        </label>
-      </div>
-      <div className="pizza-configurator__item">
-        <h3>Выберите соус</h3>
-        <label>
-          <input type="radio" name="sauce" />
-          <span>Томатный</span>
-        </label>
-        <label>
-          <input type="radio" name="sauce" />
-          <span>Белый</span>
-        </label>
-        <label>
-          <input type="radio" name="sauce" />
-          <span>Острый</span>
-        </label>
-      </div>
+      <SelectSingle
+        title="Размер"
+        name="size"
+        values={['30 см', '35 см']}
+      />
+      <SelectSingle
+        title="Тесто"
+        name="dough"
+        values={['Пышное', 'Тонкое']}
+      />
+      <SelectSingle
+        title="Выберите соус"
+        name="sauce"
+        values={['Томатный', 'Белый', 'Острый']}
+      />
       <div className="pizza-configurator__item">
         <h3>Добавьте сыр</h3>
         <label>
