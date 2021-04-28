@@ -1,14 +1,6 @@
 import React, { useState } from 'react'
+import { pizzaConfiguratorFields } from './config'
 import { PizzaConfiguratorItem } from './PizzaConfiguratorItem'
-
-const fields = [
-  { type: 'single', title: 'Размер', name: 'size', values: ['30 см', '35 см'] },
-  { type: 'single', title: 'Тесто', name: 'dough', values: ['Пышное', 'Тонкое'] },
-  { type: 'single', title: 'Выберите соус', name: 'sauce', values: ['Томатный', 'Белый', 'Острый'] },
-  { type: 'multiply', title: 'Добавьте сыр', name: 'cheese', values: ['моцарелла', 'чеддер', 'дор блю'] },
-  { type: 'multiply', title: 'Добавьте овощи', name: 'vegetables', values: ['помидор', 'грибы', 'перец'] },
-  { type: 'multiply', title: 'Добавьте мясо', name: 'meat', values: ['бекон', 'пепперони', 'ветчина'] }
-]
 
 const initialState = {
   size: '30 см',
@@ -25,17 +17,19 @@ export const PizzaConfigurator: React.FC = () => {
 
   return (
     <form className="pizza-configurator">
-      {fields.map(field => (
-        <PizzaConfiguratorItem
-          key={field.name}
-          type={field.type}
-          title={field.title}
-          name={field.name}
-          values={field.values}
-          selected={pizzaConfiguration[field.name]}
-          onChangeSelected={handleSelectedChange}
-        />
-      ))}
+      <div data-testid="pizza-configurator-fields" className="pizza-configurator__fields">
+        {pizzaConfiguratorFields.map(field => (
+          <PizzaConfiguratorItem
+            key={field.name}
+            type={field.type}
+            title={field.title}
+            name={field.name}
+            values={field.values}
+            selected={pizzaConfiguration[field.name]}
+            onChangeSelected={handleSelectedChange}
+          />
+        ))}
+      </div>
       <button>Заказать за 200 руб</button>
       <div className="pizza-configurator__selected">
         <h2>Твоя пицца</h2>
