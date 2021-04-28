@@ -30,6 +30,13 @@ const makeProps = (): PizzaConfiguratorItemProps => {
 }
 
 describe('PizzaConfiguratorItem', () => {
+  test('Should render correct title', () => {
+    const props = makeProps()
+    const { sut } = makeSut(props)
+    const title = sut.getByTestId('pizza-configurator-item-title')
+    expect(title.textContent).toBe(props.title)
+  })
+
   test('Should render radio inputs without type in the props', () => {
     const { wrapper } = makeSut(makeProps())
     const input = wrapper.querySelector('input[type="radio"]')
@@ -44,10 +51,14 @@ describe('PizzaConfiguratorItem', () => {
     expect(input).toBeTruthy()
   })
 
-  test('Should render correct title', () => {
+  test('Should render correct value in labels', () => {
     const props = makeProps()
-    const { sut } = makeSut(props)
-    const title = sut.getByTestId('pizza-configurator-item-title')
-    expect(title.textContent).toBe(props.title)
+    const { wrapper } = makeSut(props)
+    const labels = wrapper.querySelectorAll('label')
+    const values = []
+    labels.forEach(item => {
+      values.push(item.querySelector('span').textContent)
+    })
+    expect(values).toEqual(props.values)
   })
 })
