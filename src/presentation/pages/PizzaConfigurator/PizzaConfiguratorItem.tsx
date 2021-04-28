@@ -1,7 +1,7 @@
 import React from 'react'
 
 export type PizzaConfiguratorItemProps = {
-  type?: 'multiply'
+  type: string
   title: string
   name: string
   values: string[]

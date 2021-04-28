@@ -23,6 +23,7 @@ const makeProps = (): PizzaConfiguratorItemProps => {
     values.push(faker.random.words(2))
   }
   return {
+    type: 'single',
     title: faker.random.words(3),
     name: faker.database.column(),
     values,
