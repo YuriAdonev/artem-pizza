@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, cleanup } from '@testing-library/react'
 import faker from 'faker'
 import { PizzaConfiguratorItem, PizzaConfiguratorItemProps } from './PizzaConfiguratorItem'
 
@@ -18,18 +18,21 @@ const makeSut = (props: PizzaConfiguratorItemProps): SutTypes => {
 }
 
 const makeProps = (): PizzaConfiguratorItemProps => {
-  const values = [faker.random.words(2)]
+  const values = [faker.random.words(2), faker.random.words(2)]
   for (let i = 0; i < faker.datatype.number(5); i++) {
     values.push(faker.random.words(2))
   }
   return {
     title: faker.random.words(3),
     name: faker.database.column(),
-    values
+    values,
+    selected: null
   }
 }
 
 describe('PizzaConfiguratorItem', () => {
+  afterEach(cleanup)
+
   test('Should render correct title', () => {
     const props = makeProps()
     const { sut } = makeSut(props)
@@ -67,5 +70,18 @@ describe('PizzaConfiguratorItem', () => {
     const { wrapper } = makeSut(props)
     const inputName = wrapper.querySelector('input').getAttribute('name')
     expect(inputName).toBe(props.name)
+  })
+
+  test('Should set checked status to correct radio input', () => {
+    const props = makeProps()
+    const checkedIndex = faker.datatype.number(props.values.length - 1)
+    props.selected = props.values[checkedIndex]
+    const checkedStatusList = props.values.map(item => item === props.selected)
+    const { wrapper } = makeSut(props)
+    const inputs = wrapper.querySelectorAll('input[type="radio"]')
+    if (inputs) {
+      const inputStatusList = Array.from(inputs).map(item => item.getAttribute('checked') !== null)
+      expect(checkedStatusList).toEqual(inputStatusList)
+    }
   })
 })
