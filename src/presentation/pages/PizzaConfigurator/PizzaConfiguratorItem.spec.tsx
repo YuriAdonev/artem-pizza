@@ -61,4 +61,11 @@ describe('PizzaConfiguratorItem', () => {
     })
     expect(values).toEqual(props.values)
   })
+
+  test('Should render correct name in inputs', () => {
+    const props = makeProps()
+    const { wrapper } = makeSut(props)
+    const inputName = wrapper.querySelector('input').getAttribute('name')
+    expect(inputName).toBe(props.name)
+  })
 })
