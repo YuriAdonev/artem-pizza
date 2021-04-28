@@ -10,7 +10,7 @@ export type PizzaConfiguratorItemProps = {
 export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = ({ type, title, name, values }: PizzaConfiguratorItemProps) => {
   return (
     <div className="pizza-configurator-item">
-      <h3>{title}</h3>
+      <h3 data-testid={'pizza-configurator-item-title'}>{title}</h3>
       <div data-testid={'pizza-configurator-item-wrapper'} className="pizza-configurator-item__wrap">
         {values.map((value, index) => {
           const inputType = type === 'multiply' ? 'checkbox' : 'radio'
