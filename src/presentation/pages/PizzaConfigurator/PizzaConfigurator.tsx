@@ -8,34 +8,40 @@ export const PizzaConfigurator: React.FC = () => {
         title="Размер"
         name="size"
         values={['30 см', '35 см']}
+        selected="30 см"
       />
       <PizzaConfiguratorItem
         title="Тесто"
         name="dough"
         values={['Пышное', 'Тонкое']}
+        selected="Пышное"
       />
       <PizzaConfiguratorItem
         title="Выберите соус"
         name="sauce"
         values={['Томатный', 'Белый', 'Острый']}
+        selected="Томатный"
       />
       <PizzaConfiguratorItem
         type="multiply"
         title="Добавьте сыр"
         name="cheese"
         values={['моцарелла', 'чеддер', 'дор блю']}
+        selected={[]}
       />
       <PizzaConfiguratorItem
         type="multiply"
         title="Добавьте овощи"
         name="vegetables"
         values={['помидор', 'грибы', 'перец']}
+        selected={[]}
       />
       <PizzaConfiguratorItem
         type="multiply"
         title="Добавьте мясо"
         name="meat"
         values={['бекон', 'пепперони', 'ветчина']}
+        selected={[]}
       />
       <button>Заказать за 200 руб</button>
       <div className="pizza-configurator__selected">
