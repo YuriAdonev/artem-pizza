@@ -26,7 +26,7 @@ const makeProps = (): PizzaConfiguratorItemProps => {
     title: faker.random.words(3),
     name: faker.database.column(),
     values,
-    selected: null
+    selected: []
   }
 }
 
@@ -79,6 +79,22 @@ describe('PizzaConfiguratorItem', () => {
     const checkedStatusList = props.values.map(item => item === props.selected)
     const { wrapper } = makeSut(props)
     const inputs = wrapper.querySelectorAll('input[type="radio"]')
+    if (inputs) {
+      const inputStatusList = Array.from(inputs).map(item => item.getAttribute('checked') !== null)
+      expect(checkedStatusList).toEqual(inputStatusList)
+    }
+  })
+
+  test('Should set checked status to correct checkbox input', () => {
+    const props = makeProps()
+    props.type = 'multiply'
+    const checkedIndex = faker.datatype.number(props.values.length - 1)
+    const checkedValue = props.values[checkedIndex]
+    props.selected = []
+    props.selected.push(checkedValue)
+    const checkedStatusList = props.values.map(item => props.selected.includes(item))
+    const { wrapper } = makeSut(props)
+    const inputs = wrapper.querySelectorAll('input[type="checkbox"]')
     if (inputs) {
       const inputStatusList = Array.from(inputs).map(item => item.getAttribute('checked') !== null)
       expect(checkedStatusList).toEqual(inputStatusList)
