@@ -1,18 +1,9 @@
 import React, { useState } from 'react'
-import { pizzaConfiguratorFields } from './config'
+import { pizzaConfiguratorFields, pizzaConfiguratorInitialState } from './config'
 import { PizzaConfiguratorItem } from './PizzaConfiguratorItem'
 
-const initialState = {
-  size: '30 см',
-  dough: 'Пышное',
-  sauce: 'Томатный',
-  cheese: [],
-  vegetables: [],
-  meat: []
-}
-
 export const PizzaConfigurator: React.FC = () => {
-  const [pizzaConfiguration, _setPizzaConfiguration] = useState(initialState)
+  const [pizzaConfiguration, _setPizzaConfiguration] = useState(pizzaConfiguratorInitialState)
   const handleSelectedChange = (_type: string, _name: string, _value: string): void => {}
 
   return (
