@@ -111,4 +111,14 @@ describe('PizzaConfiguratorItem', () => {
     fireEvent.click(wrapper.querySelectorAll('input[type="radio"]')[1], {})
     expect(props.onChangeSelected).toBeCalledWith(props.type, props.name, 'any_value2')
   })
+
+  test('Should dont call onChangeSelected on click on radio input if already checked', () => {
+    const props = makeProps()
+    props.values = ['any_value1', 'any_value2', 'any_value3']
+    props.selected = 'any_value1'
+    jest.spyOn(props, 'onChangeSelected').mockImplementationOnce(() => {})
+    const { wrapper } = makeSut(props)
+    fireEvent.click(wrapper.querySelectorAll('input[type="radio"]')[0], {})
+    expect(props.onChangeSelected).toBeCalledTimes(0)
+  })
 })
