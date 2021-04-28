@@ -43,4 +43,11 @@ describe('PizzaConfiguratorItem', () => {
     const input = wrapper.querySelector('input[type="checkbox"]')
     expect(input).toBeTruthy()
   })
+
+  test('Should render correct title', () => {
+    const props = makeProps()
+    const { sut } = makeSut(props)
+    const title = sut.getByTestId('pizza-configurator-item-title')
+    expect(title.textContent).toBe(props.title)
+  })
 })
