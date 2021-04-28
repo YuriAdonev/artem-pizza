@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, RenderResult, cleanup } from '@testing-library/react'
+import { render, RenderResult, cleanup, fireEvent } from '@testing-library/react'
 import faker from 'faker'
 import { PizzaConfiguratorItem, PizzaConfiguratorItemProps } from './PizzaConfiguratorItem'
 
@@ -26,7 +26,8 @@ const makeProps = (): PizzaConfiguratorItemProps => {
     title: faker.random.words(3),
     name: faker.database.column(),
     values,
-    selected: []
+    selected: [],
+    onChangeSelected: () => {}
   }
 }
 
@@ -99,5 +100,15 @@ describe('PizzaConfiguratorItem', () => {
       const inputStatusList = Array.from(inputs).map(item => item.getAttribute('checked') !== null)
       expect(checkedStatusList).toEqual(inputStatusList)
     }
+  })
+
+  test('Should call onChangeSelected with correct value on click on radio input', () => {
+    const props = makeProps()
+    props.values = ['any_value1', 'any_value2', 'any_value3']
+    props.selected = 'any_value1'
+    jest.spyOn(props, 'onChangeSelected').mockImplementationOnce(() => {})
+    const { wrapper } = makeSut(props)
+    fireEvent.click(wrapper.querySelectorAll('input[type="radio"]')[1], {})
+    expect(props.onChangeSelected).toBeCalledWith(props.type, props.name, 'any_value2')
   })
 })
