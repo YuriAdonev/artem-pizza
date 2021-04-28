@@ -6,10 +6,13 @@ export type PizzaConfiguratorItemProps = {
   name: string
   values: string[]
   selected: string | string[]
+  onChangeSelected: (type: string, name: string, value: string) => void
 }
 
-export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = ({ type, title, name, values, selected }: PizzaConfiguratorItemProps) => {
-  const handleChange = (): void => {}
+export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = ({ type, title, name, values, selected, onChangeSelected }: PizzaConfiguratorItemProps) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+    onChangeSelected(type, name, evt.target.value)
+  }
 
   return (
     <div className="pizza-configurator-item">
@@ -29,6 +32,7 @@ export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = ({ ty
                 name={name}
                 checked={isChecked}
                 onChange={handleChange}
+                value={value}
               />
               <span>{value}</span>
             </label>
