@@ -81,4 +81,10 @@ describe('PizzaConfigurator', () => {
     clickOnInputByValue(fieldsWrapper, '30 см')
     testButtonText(sut, String(prices.base + prices.filling + prices.filling))
   })
+
+  test('Should dont render order info on start', () => {
+    const sut = makeSut()
+    const orderInfo = sut.getByTestId('pizza-configurator-order-info')
+    expect(orderInfo.childElementCount).toBe(0)
+  })
 })
