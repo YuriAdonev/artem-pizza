@@ -22,6 +22,10 @@ const getRenderedPizzaConfiguration = (element: HTMLElement): object => {
   return result
 }
 
+const clickOnInputByValue = (wrapper: HTMLElement, value: string): void => {
+  fireEvent.click(wrapper.querySelector(`input[value="${value}"]`))
+}
+
 describe('PizzaConfigurator', () => {
   afterEach(cleanup)
 
@@ -45,11 +49,11 @@ describe('PizzaConfigurator', () => {
   test('Should update state on change inputs', () => {
     const sut = makeSut()
     const fieldsWrapper = sut.getByTestId('pizza-configurator-fields')
-    fireEvent.click(fieldsWrapper.querySelector('input[value="35 см"]'))
-    fireEvent.click(fieldsWrapper.querySelector('input[value="моцарелла"]'))
-    fireEvent.click(fieldsWrapper.querySelector('input[value="моцарелла"]'))
-    fireEvent.click(fieldsWrapper.querySelector('input[value="чеддер"]'))
-    fireEvent.click(fieldsWrapper.querySelector('input[value="дор блю"]'))
+    clickOnInputByValue(fieldsWrapper, '35 см')
+    clickOnInputByValue(fieldsWrapper, 'моцарелла')
+    clickOnInputByValue(fieldsWrapper, 'моцарелла')
+    clickOnInputByValue(fieldsWrapper, 'чеддер')
+    clickOnInputByValue(fieldsWrapper, 'дор блю')
     const state = { ...initialState, size: '35 см', cheese: ['чеддер', 'дор блю'] }
     expect(getRenderedPizzaConfiguration(fieldsWrapper)).toEqual(state)
   })
