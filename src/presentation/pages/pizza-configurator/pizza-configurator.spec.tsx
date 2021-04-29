@@ -63,7 +63,22 @@ describe('PizzaConfigurator', () => {
     expect(getRenderedPizzaConfiguration(fieldsWrapper)).toEqual(state)
   })
 
-  test('Should show correct price on start', () => {
+  test('Should show base price on start', () => {
     testButtonText(makeSut(), prices.base.toString())
+  })
+
+  test('Should show correct price on change inputs', () => {
+    const sut = makeSut()
+    const fieldsWrapper = sut.getByTestId('pizza-configurator-fields')
+    clickOnInputByValue(fieldsWrapper, '35 см')
+    testButtonText(sut, String(prices.base + prices.bigSize))
+    clickOnInputByValue(fieldsWrapper, 'моцарелла')
+    testButtonText(sut, String(prices.base + prices.bigSize + prices.filling))
+    clickOnInputByValue(fieldsWrapper, 'моцарелла')
+    testButtonText(sut, String(prices.base + prices.bigSize))
+    clickOnInputByValue(fieldsWrapper, 'чеддер')
+    clickOnInputByValue(fieldsWrapper, 'дор блю')
+    clickOnInputByValue(fieldsWrapper, '30 см')
+    testButtonText(sut, String(prices.base + prices.filling + prices.filling))
   })
 })
