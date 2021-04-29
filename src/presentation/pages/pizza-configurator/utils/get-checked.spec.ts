@@ -6,6 +6,10 @@ describe('Utils - getChecked', () => {
   })
 
   test('Should return false if value not includes in selected on type multiply', () => {
-    expect(getChecked({ type: 'multiply', value: 'current_value', selected: ['any_value'] })).toBeFalsy()
+    expect(getChecked({ type: 'multiply', value: 'current_value', selected: ['any_value'] })).toBe(false)
+  })
+
+  test('Should return true if value includes in selected on type multiply', () => {
+    expect(getChecked({ type: 'multiply', value: 'current_value', selected: ['current_value'] })).toBe(true)
   })
 })
