@@ -1,2 +1,2 @@
-export * from './pizza-configurator-fields'
-export * from './pizza-configurator-initial-state'
+export * from './fields'
+export * from './initial-state'

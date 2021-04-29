@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, RenderResult, cleanup } from '@testing-library/react'
-import { pizzaConfiguratorFields, pizzaConfiguratorInitialState } from './config'
+import { fields, initialState } from './config'
 import { PizzaConfigurator } from './PizzaConfigurator'
 
 const makeSut = (): RenderResult => render(<PizzaConfigurator />)
@@ -11,7 +11,7 @@ describe('PizzaConfigurator', () => {
   test('Should render all form fields', () => {
     const sut = makeSut()
     const fieldsWrapper = sut.getByTestId('pizza-configurator-fields')
-    pizzaConfiguratorFields.forEach(field => {
+    fields.forEach(field => {
       field.values.forEach(value => {
         const input = fieldsWrapper.querySelector(`input[name="${field.name}"][value="${value}"]`)
         expect(input).toBeTruthy()
@@ -23,7 +23,7 @@ describe('PizzaConfigurator', () => {
     const sut = makeSut()
     const fieldsWrapper = sut.getByTestId('pizza-configurator-fields')
     const configuration = {}
-    pizzaConfiguratorFields.forEach(field => {
+    fields.forEach(field => {
       const inputs = fieldsWrapper.querySelectorAll<HTMLInputElement>(`input[name="${field.name}"]`)
       const checkedInputs = []
       inputs.forEach(input => input.checked && checkedInputs.push(input.value))
@@ -35,6 +35,6 @@ describe('PizzaConfigurator', () => {
         configuration[field.name] = checkedInputs
       }
     })
-    expect(configuration).toEqual(pizzaConfiguratorInitialState)
+    expect(configuration).toEqual(initialState)
   })
 })

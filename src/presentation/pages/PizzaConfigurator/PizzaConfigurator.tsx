@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { pizzaConfiguratorFields, pizzaConfiguratorInitialState } from './config'
+import { fields, initialState } from './config'
 import { PizzaConfiguratorItem } from './PizzaConfiguratorItem'
 
 export const PizzaConfigurator: React.FC = () => {
-  const [pizzaConfiguration, _setPizzaConfiguration] = useState(pizzaConfiguratorInitialState)
+  const [pizzaConfiguration, _setPizzaConfiguration] = useState(initialState)
   const handleSelectedChange = (_type: string, _name: string, _value: string): void => {}
 
   return (
     <form className="pizza-configurator">
       <div data-testid="pizza-configurator-fields" className="pizza-configurator__fields">
-        {pizzaConfiguratorFields.map(field => (
+        {fields.map(field => (
           <PizzaConfiguratorItem
             key={field.name}
             type={field.type}

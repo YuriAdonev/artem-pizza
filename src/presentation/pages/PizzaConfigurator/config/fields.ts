@@ -1,11 +1,11 @@
-export type PizzaConfiguratorFieldTypes = {
+export type FieldTypes = {
   type: string
   title: string
   name: string
   values: string[]
 }
 
-export const pizzaConfiguratorFields: PizzaConfiguratorFieldTypes[] = [
+export const fields: FieldTypes[] = [
   { type: 'single', title: 'Размер', name: 'size', values: ['30 см', '35 см'] },
   { type: 'single', title: 'Тесто', name: 'dough', values: ['Пышное', 'Тонкое'] },
   { type: 'single', title: 'Выберите соус', name: 'sauce', values: ['Томатный', 'Белый', 'Острый'] },
