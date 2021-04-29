@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, RenderResult, cleanup, fireEvent } from '@testing-library/react'
-import { fields, initialState } from './config'
+import { fields, initialState, prices } from './config'
 import { PizzaConfigurator } from './pizza-configurator'
 
 const makeSut = (): RenderResult => render(<PizzaConfigurator />)
@@ -24,6 +24,11 @@ const getRenderedPizzaConfiguration = (element: HTMLElement): object => {
 
 const clickOnInputByValue = (wrapper: HTMLElement, value: string): void => {
   fireEvent.click(wrapper.querySelector(`input[value="${value}"]`))
+}
+
+const testButtonText = (sut: RenderResult, price: string): void => {
+  const button = sut.getByTestId('pizza-configurator-submit')
+  expect(button.textContent).toBe(`Заказать за ${price} руб`)
 }
 
 describe('PizzaConfigurator', () => {
@@ -56,5 +61,9 @@ describe('PizzaConfigurator', () => {
     clickOnInputByValue(fieldsWrapper, 'дор блю')
     const state = { ...initialState, size: '35 см', cheese: ['чеддер', 'дор блю'] }
     expect(getRenderedPizzaConfiguration(fieldsWrapper)).toEqual(state)
+  })
+
+  test('Should show correct price on start', () => {
+    testButtonText(makeSut(), prices.base.toString())
   })
 })
