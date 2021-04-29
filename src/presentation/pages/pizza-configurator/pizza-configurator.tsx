@@ -5,6 +5,7 @@ import { PizzaConfiguratorItem } from './pizza-configurator-item'
 
 export const PizzaConfigurator: React.FC = () => {
   const [pizzaConfiguration, setPizzaConfiguration] = useState(initialState)
+  const [showOrderInfo, _setShowOrderInfo] = useState(false)
   const handleSelectedChange = (type: string, name: string, value: string): void => {
     if (type === 'single') {
       setPizzaConfiguration(state => ({
@@ -44,10 +45,14 @@ export const PizzaConfigurator: React.FC = () => {
         ))}
       </div>
       <button data-testid="pizza-configurator-submit">Заказать за {calculatePrice(pizzaConfiguration)} руб</button>
-      <div className="pizza-configurator__selected">
-        <h2>Твоя пицца</h2>
-        <p>30 см на толстом тесте</p>
-        <p>Томатный соус, Моцарелла, Томаты</p>
+      <div data-testid="pizza-configurator-order-info" className="pizza-configurator-order-info">
+        {showOrderInfo && (
+          <div className="pizza-configurator-order-info__wrap">
+            <h2>Твоя пицца</h2>
+            <p>30 см на толстом тесте</p>
+            <p>Томатный соус, Моцарелла, Томаты</p>
+          </div>
+        )}
       </div>
     </form>
   )
