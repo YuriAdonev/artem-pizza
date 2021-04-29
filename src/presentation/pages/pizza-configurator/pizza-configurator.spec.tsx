@@ -87,4 +87,12 @@ describe('PizzaConfigurator', () => {
     const orderInfo = sut.getByTestId('pizza-configurator-order-info')
     expect(orderInfo.childElementCount).toBe(0)
   })
+
+  test('Should render order info on submit form', () => {
+    const sut = makeSut()
+    const button = sut.getByTestId('pizza-configurator-submit')
+    fireEvent.click(button)
+    const orderInfo = sut.getByTestId('pizza-configurator-order-info')
+    expect(orderInfo.childElementCount).toBe(3)
+  })
 })
