@@ -16,4 +16,8 @@ describe('Utils - getChecked', () => {
   test('Should return false if value not equal selected on type single', () => {
     expect(getChecked({ type: 'single', value: 'current_value', selected: 'any_value' })).toBe(false)
   })
+
+  test('Should return true if value equal selected on type single', () => {
+    expect(getChecked({ type: 'single', value: 'current_value', selected: 'current_value' })).toBe(true)
+  })
 })
