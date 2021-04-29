@@ -1,4 +1,5 @@
 import React from 'react'
+import { getChecked } from './utils'
 
 export type PizzaConfiguratorItemProps = {
   type: string
@@ -19,18 +20,16 @@ export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = ({ ty
       <h3 data-testid={'pizza-configurator-item-title'}>{title}</h3>
       <div data-testid={'pizza-configurator-item-wrapper'} className="pizza-configurator-item__wrap">
         {values.map((value, index) => {
-          let isChecked = value === selected
           let inputType = 'radio'
           if (type === 'multiply') {
             inputType = 'checkbox'
-            isChecked = selected.includes(value)
           }
           return (
             <label key={index}>
               <input
                 type={inputType}
                 name={name}
-                checked={isChecked}
+                checked={getChecked({ type, value, selected })}
                 onChange={handleChange}
                 value={value}
               />
