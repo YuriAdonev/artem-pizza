@@ -3,8 +3,29 @@ import { fields, initialState } from './config'
 import { PizzaConfiguratorItem } from './pizza-configurator-item'
 
 export const PizzaConfigurator: React.FC = () => {
-  const [pizzaConfiguration, _setPizzaConfiguration] = useState(initialState)
-  const handleSelectedChange = (_type: string, _name: string, _value: string): void => {}
+  const [pizzaConfiguration, setPizzaConfiguration] = useState(initialState)
+  const handleSelectedChange = (type: string, name: string, value: string): void => {
+    if (type === 'single') {
+      setPizzaConfiguration(state => ({
+        ...state,
+        [name]: value
+      }))
+    }
+    if (type === 'multiply') {
+      setPizzaConfiguration(state => {
+        let values = []
+        if (state[name].includes(value)) {
+          values = state[name].filter((item: string) => item !== value)
+        } else {
+          values = [...state[name], value]
+        }
+        return {
+          ...state,
+          [name]: values
+        }
+      })
+    }
+  }
 
   return (
     <form className="pizza-configurator">
