@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { fields, initialState } from './config'
+import { calculatePrice } from './utils'
 import { PizzaConfiguratorItem } from './pizza-configurator-item'
 
 export const PizzaConfigurator: React.FC = () => {
@@ -42,7 +43,7 @@ export const PizzaConfigurator: React.FC = () => {
           />
         ))}
       </div>
-      <button data-testid="pizza-configurator-submit">Заказать за 200 руб</button>
+      <button data-testid="pizza-configurator-submit">Заказать за {calculatePrice(pizzaConfiguration)} руб</button>
       <div className="pizza-configurator__selected">
         <h2>Твоя пицца</h2>
         <p>30 см на толстом тесте</p>
