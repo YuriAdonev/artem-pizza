@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { PizzaConfigurator } from '@/presentation/pages/PizzaConfigurator/PizzaConfigurator'
+import { PizzaConfigurator } from '@/presentation/pages/pizza-configurator'
 
 ReactDOM.render(
   <PizzaConfigurator />,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { fields, initialState } from './config'
-import { PizzaConfiguratorItem } from './PizzaConfiguratorItem'
+import { PizzaConfiguratorItem } from './pizza-configurator-item'
 
 export const PizzaConfigurator: React.FC = () => {
   const [pizzaConfiguration, _setPizzaConfiguration] = useState(initialState)
