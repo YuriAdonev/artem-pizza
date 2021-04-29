@@ -10,7 +10,8 @@ export type PizzaConfiguratorItemProps = {
   onChangeSelected: (type: string, name: string, value: string) => void
 }
 
-export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = ({ type, title, name, values, selected, onChangeSelected }: PizzaConfiguratorItemProps) => {
+export const PizzaConfiguratorItem: React.FC<PizzaConfiguratorItemProps> = (props: PizzaConfiguratorItemProps) => {
+  const { type, title, name, values, selected, onChangeSelected } = props
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     onChangeSelected(type, name, evt.target.value)
   }
