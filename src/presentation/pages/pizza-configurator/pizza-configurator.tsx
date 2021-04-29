@@ -42,7 +42,7 @@ export const PizzaConfigurator: React.FC = () => {
           />
         ))}
       </div>
-      <button>Заказать за 200 руб</button>
+      <button data-testid="pizza-configurator-submit">Заказать за 200 руб</button>
       <div className="pizza-configurator__selected">
         <h2>Твоя пицца</h2>
         <p>30 см на толстом тесте</p>
