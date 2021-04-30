@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fields, initialState, StateTypes } from './config'
-import { calculatePrice } from './utils'
+import { calculatePrice, getOrderInfoBase } from './utils'
 import { PizzaConfiguratorItem } from './pizza-configurator-item'
-
-const getOrderInfoBase = (state: StateTypes): string => `${state.size}, ${state.dough} тесто`
 
 const getOrderInfoFillings = (state: StateTypes): string => {
   const fillings = [...state.cheese, ...state.vegetables, ...state.meat].map(filling => ' ' + filling)
