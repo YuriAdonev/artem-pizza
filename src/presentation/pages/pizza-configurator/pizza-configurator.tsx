@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fields, initialState } from './config'
-import { calculatePrice, getOrderInfoBase, getOrderInfoFillings } from './utils'
+import { calculatePrice, getOrderInfoBase, getOrderInfoFillings, addFilling, removeFilling } from './utils'
 import { PizzaConfiguratorItem } from './pizza-configurator-item'
 
 export const PizzaConfigurator: React.FC = () => {
@@ -22,15 +22,10 @@ export const PizzaConfigurator: React.FC = () => {
     }
     if (type === 'multiply') {
       setPizzaConfiguration(state => {
-        let values = []
-        if (state[name].includes(value)) {
-          values = state[name].filter((item: string) => item !== value)
-        } else {
-          values = [...state[name], value]
-        }
+        const isAlreadySelected = state[name].includes(value)
         return {
           ...state,
-          [name]: values
+          [name]: isAlreadySelected ? removeFilling(state[name], value) : addFilling(state[name], value)
         }
       })
     }
