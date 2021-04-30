@@ -93,7 +93,7 @@ describe('PizzaConfigurator', () => {
     const button = sut.getByTestId('pizza-configurator-submit')
     fireEvent.click(button)
     const orderInfo = sut.getByTestId('pizza-configurator-order-info')
-    expect(orderInfo.childElementCount).toBe(3)
+    expect(orderInfo.childElementCount).toBe(4)
   })
 
   test('Should render correct order info content on submit form', () => {
@@ -107,7 +107,9 @@ describe('PizzaConfigurator', () => {
     fireEvent.click(button)
     const baseText = sut.getByTestId('pizza-configurator-order-info-base')
     const fillingsText = sut.getByTestId('pizza-configurator-order-info-fillings')
+    const priceText = sut.getByTestId('pizza-configurator-order-info-price')
     expect(baseText.textContent).toBe('30 см, Пышное тесто')
     expect(fillingsText.textContent).toBe('Томатный соус, моцарелла, помидор, перец, пепперони')
+    expect(priceText.textContent).toBe('Цена 316 руб')
   })
 })

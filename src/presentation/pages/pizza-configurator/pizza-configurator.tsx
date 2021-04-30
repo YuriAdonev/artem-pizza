@@ -58,6 +58,7 @@ export const PizzaConfigurator: React.FC = () => {
             <h2>Твоя пицца</h2>
             <p data-testid="pizza-configurator-order-info-base">{getOrderInfoBase(pizzaConfiguration)}</p>
             <p data-testid="pizza-configurator-order-info-fillings">{getOrderInfoFillings(pizzaConfiguration)}</p>
+            <p data-testid="pizza-configurator-order-info-price">Цена {calculatePrice(pizzaConfiguration)} руб</p>
           </>
         )}
       </div>
