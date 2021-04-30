@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { fields, initialState, StateTypes } from './config'
-import { calculatePrice, getOrderInfoBase } from './utils'
+import { fields, initialState } from './config'
+import { calculatePrice, getOrderInfoBase, getOrderInfoFillings } from './utils'
 import { PizzaConfiguratorItem } from './pizza-configurator-item'
-
-const getOrderInfoFillings = (state: StateTypes): string => {
-  const fillings = [...state.cheese, ...state.vegetables, ...state.meat].map(filling => ' ' + filling)
-  return `${state.sauce} соус${fillings.length ? ',' + fillings.toString() : ''}`
-}
 
 export const PizzaConfigurator: React.FC = () => {
   const [pizzaConfiguration, setPizzaConfiguration] = useState(initialState)
