@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
-import { fields, initialState } from './config'
+import React, { useEffect, useState } from 'react'
+import { fields, initialState, StateTypes } from './config'
 import { calculatePrice } from './utils'
 import { PizzaConfiguratorItem } from './pizza-configurator-item'
+
+const getOrderInfoBase = (state: StateTypes): string => `${state.size}, ${state.dough} тесто`
+
+const getOrderInfoFillings = (state: StateTypes): string => {
+  const fillings = [...state.cheese, ...state.vegetables, ...state.meat].map(filling => ' ' + filling)
+  return `${state.sauce} соус${fillings.length ? ',' + fillings.toString() : ''}`
+}
 
 export const PizzaConfigurator: React.FC = () => {
   const [pizzaConfiguration, setPizzaConfiguration] = useState(initialState)
   const [showOrderInfo, setShowOrderInfo] = useState(false)
+
+  useEffect(() => {
+    if (showOrderInfo) {
+      setShowOrderInfo(false)
+    }
+  }, [pizzaConfiguration])
+
   const handleSelectedChange = (type: string, name: string, value: string): void => {
     if (type === 'single') {
       setPizzaConfiguration(state => ({
@@ -54,8 +68,8 @@ export const PizzaConfigurator: React.FC = () => {
         {showOrderInfo && (
           <>
             <h2>Твоя пицца</h2>
-            <p>30 см на толстом тесте</p>
-            <p>Томатный соус, Моцарелла, Томаты</p>
+            <p data-testid="pizza-configurator-order-info-base">{getOrderInfoBase(pizzaConfiguration)}</p>
+            <p data-testid="pizza-configurator-order-info-fillings">{getOrderInfoFillings(pizzaConfiguration)}</p>
           </>
         )}
       </div>
