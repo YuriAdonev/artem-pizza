@@ -1,1 +1,1 @@
-export * from './pizza-configurator'
+export * from './PizzaConfigurator'

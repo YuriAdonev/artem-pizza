@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, RenderResult, cleanup, fireEvent } from '@testing-library/react'
 import faker from 'faker'
-import { PizzaConfiguratorItem, PizzaConfiguratorItemProps } from './pizza-configurator-item'
+import { PizzaConfiguratorItem, PizzaConfiguratorItemProps } from './PizzaConfiguratorItem'
 
 type SutTypes = {
   sut: RenderResult

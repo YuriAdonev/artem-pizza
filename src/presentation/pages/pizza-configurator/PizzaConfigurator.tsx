@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fields, initialState } from './config'
 import { calculatePrice, getOrderInfoBase, getOrderInfoFillings, addFilling, removeFilling } from './utils'
-import { PizzaConfiguratorItem } from './pizza-configurator-item'
+import { PizzaConfiguratorItem } from './PizzaConfiguratorItem'
 
 export const PizzaConfigurator: React.FC = () => {
   const [pizzaConfiguration, setPizzaConfiguration] = useState(initialState)

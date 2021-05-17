@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, RenderResult, cleanup, fireEvent } from '@testing-library/react'
 import { fields, initialState, prices } from './config'
-import { PizzaConfigurator } from './pizza-configurator'
+import { PizzaConfigurator } from './PizzaConfigurator'
 
 const makeSut = (): RenderResult => render(<PizzaConfigurator />)
 
