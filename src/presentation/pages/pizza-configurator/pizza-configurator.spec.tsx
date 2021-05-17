@@ -15,7 +15,7 @@ const getRenderedPizzaConfiguration = (element: HTMLElement): object => {
       expect(checkedInputs.length).toBe(1)
       result[field.name] = checkedInputs[0]
     }
-    if (field.type === 'multiply') {
+    if (field.type === 'multiple') {
       result[field.name] = checkedInputs
     }
   })

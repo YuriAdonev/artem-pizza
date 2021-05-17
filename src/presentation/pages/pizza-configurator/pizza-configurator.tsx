@@ -20,7 +20,7 @@ export const PizzaConfigurator: React.FC = () => {
         [name]: value
       }))
     }
-    if (type === 'multiply') {
+    if (type === 'multiple') {
       setPizzaConfiguration(state => {
         const isAlreadySelected = state[name].includes(value)
         return {

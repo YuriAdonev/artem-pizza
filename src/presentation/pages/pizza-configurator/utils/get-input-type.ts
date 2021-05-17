@@ -1,5 +1,5 @@
 export const getInputType = (type: string): string => {
-  if (type === 'multiply') {
+  if (type === 'multiple') {
     return 'checkbox'
   }
   return 'radio'

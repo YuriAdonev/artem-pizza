@@ -48,9 +48,9 @@ describe('PizzaConfiguratorItem', () => {
     expect(input).toBeTruthy()
   })
 
-  test('Should render checkbox inputs with type=multiply in the props', () => {
+  test('Should render checkbox inputs with type=multiple in the props', () => {
     const props = makeProps()
-    props.type = 'multiply'
+    props.type = 'multiple'
     const { wrapper } = makeSut(props)
     const input = wrapper.querySelector('input[type="checkbox"]')
     expect(input).toBeTruthy()
@@ -89,7 +89,7 @@ describe('PizzaConfiguratorItem', () => {
 
   test('Should set checked status to correct checkbox input', () => {
     const props = makeProps()
-    props.type = 'multiply'
+    props.type = 'multiple'
     const checkedIndex = faker.datatype.number(props.values.length - 1)
     const checkedValue = props.values[checkedIndex]
     props.selected = []

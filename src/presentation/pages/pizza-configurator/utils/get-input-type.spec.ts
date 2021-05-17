@@ -9,7 +9,7 @@ describe('Utils - getInputType', () => {
     expect(getInputType('single')).toBe('radio')
   })
 
-  test('Should return checkbox if type multiply', () => {
-    expect(getInputType('multiply')).toBe('checkbox')
+  test('Should return checkbox if type multiple', () => {
+    expect(getInputType('multiple')).toBe('checkbox')
   })
 })

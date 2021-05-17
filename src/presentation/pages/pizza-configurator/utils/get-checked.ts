@@ -8,7 +8,7 @@ export const getChecked = ({ type, value, selected }: PropsTypes): boolean => {
   if (type === 'single') {
     return value === selected
   }
-  if (type === 'multiply') {
+  if (type === 'multiple') {
     return selected.includes(value)
   }
   return false
