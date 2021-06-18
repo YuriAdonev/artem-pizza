@@ -36,7 +36,7 @@ module.exports = merge(common, {
       inject: 'body'
     }),
     new MiniCssExtractPlugin({
-      filename: 'main-bundle-[hash].css'
+      filename: 'main-bundle-[fullhash].css'
     })
   ]
 })
