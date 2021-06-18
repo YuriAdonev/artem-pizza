@@ -4,3 +4,8 @@ node_js:
 script:
   - eslint 'src/**'
   - npm run test:ci
+deploy:
+  provider: netlify
+  site: e357f6eb-34c9-461b-be32-96a0595c3029
+  auth: HgfvMRVikk5mMFu7Zqj2vAFMeA6IhxzBoVZ2KeKXlQs
+  edge: true # opt in to dpl v2
